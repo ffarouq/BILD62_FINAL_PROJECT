@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[2]:
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+
+
+# In[3]:
+
+
+get_ipython().run_line_magic('whos', '')
+
+
+# In[4]:
+
+
+sleep_data = pd.read_csv('Datasets/Marqueze.csv',sep=',')
+sleep_data.head()
+
+
+# In[5]:
+
+
+row_index = 'id'
+sleep_data = sleep_data.set_index(row_index)
+sleep_data.head()
+
+
+# In[6]:
+
+
+def subsetting_binary_column_then_mean():
+    ''' Subsets a column of binary data, then takes the average of another variable after subsetting.
+        Needs the following variables defined before calling function: original_df,column_of_interest,
+        data_from_another_column_1 '''
+    new_df_1 = original_df[original_df[column_of_interest] == 1]
+    new_df_2=original_df[original_df[column_of_interest] == 0]
+    sample_1 = new_df_1[data_from_another_column] 
+    sample_2 = new_df_2[data_from_another_column]
+    print(sample_1.mean())
+    print(sample_2.mean())
+   
+
+
+# In[7]:
+
+
+original_df=sleep_data
+column_of_interest= 'Depression'
+data_from_another_column='Sunworkmonth_H'
+subsetting_binary_column_then_mean()
+
+
+# In[ ]:
+
+
+
+
